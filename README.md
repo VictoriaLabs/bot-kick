@@ -1,10 +1,10 @@
 ---- Installation ----
 
-Clone this repository (https://github.com/VictoriaLabs/bot-kick.git)
-Install Docker (https://docs.docker.com/get-docker/)
-Install Docker-compose (if you don't already get it) (https://docs.docker.com/compose/install/)
-Install Make (https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/)
-Enjoy (optional)
+Clone this repository (https://github.com/VictoriaLabs/bot-kick.git)  
+Install Docker (https://docs.docker.com/get-docker/)  
+Install Docker-compose (if you don't already get it) (https://docs.docker.com/compose/install/)  
+Install Make (https://tilburgsciencehub.com/building-blocks/configure-your-computer/automation-and-workflows/make/)  
+Enjoy (optional)  
 
 ---- Get started ----
 
