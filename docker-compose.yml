@@ -23,6 +23,6 @@ services:
     command: bash -c "npm i && npx ts-node-dev --clear --poll app.ts" #remplacer par "npm i && npx ts-node app.ts" en prod (node-dev utilise du CPU)
 
 networks:
-  traefik:
+  default:
     external:
       name: traefik
