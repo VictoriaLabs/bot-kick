@@ -9,3 +9,5 @@ services:
     volumes:
       - ./src:/usr/src/app
     command: bash -c "npm i && npx ts-node-dev --clear --poll app.ts" #remplacer par "npm i && npx ts-node app.ts" en prod (node-dev utilise du CPU)
+    labels:
+      - "traefik.http.routers.whoami.rule=Host(`test.mazbaz.fr`)"
