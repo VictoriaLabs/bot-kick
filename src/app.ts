@@ -1,4 +1,4 @@
-import { client } from "./kickchat-client/src/index";
+import { client } from "./kickchat-client/index";
 
 let chanels : [string] = ["victorialabs"];
 
