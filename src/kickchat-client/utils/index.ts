@@ -3,6 +3,9 @@ import StealthPlugin from "puppeteer-extra-plugin-stealth";
 
 import { KickChannelInfo } from "../types/channels";
 
+require('dotenv').config();
+
+
 // this is a runtime solution since you should be persisting this data in db
 export const runtimeChannelData = new Map<number, string>();
 
@@ -10,7 +13,7 @@ export const getChannelData = async (channel: string) => {
   const puppeteerExtra = puppeteer.use(StealthPlugin()) as typeof puppeteer;
   const browser = await puppeteerExtra.launch({ headless: "new",args: ['--no-sandbox'] });
   const page = await browser.newPage();
-  await page.goto(`https://kick.com/api/v2/channels/${channel}`);
+  await page.goto(process.env.KICK_API+channel);
   await page.waitForSelector("body");
   try {
     const jsonContent: KickChannelInfo = await page.evaluate(() => {

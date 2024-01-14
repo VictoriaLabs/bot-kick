@@ -5,7 +5,7 @@ import WebSocket from "ws";
 import { onMessage } from "./handlers/onMessage";
 import { getChatroomId, runtimeChannelData } from "./utils";
 
-const baseUrl = "wss://ws-us2.pusher.com/app/eb1d5f283081a78b932c";
+const baseUrl = process.env.KICKCHAT_WEBSOCKET;
 const urlParams = new URLSearchParams({
   protocol: "7",
   client: "js",
