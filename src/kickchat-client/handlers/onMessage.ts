@@ -86,9 +86,10 @@ function eventCalculation(message: string) {
 function sendMessage(channelName : string | undefined, username : string, message : string){
   let data = {
     platform: "kick",
+    channelName: channelName,
     username: username,
     message: message,
   };
 
-  emitEvent(channelName, data);
+  emitEvent("message", data);
 }
