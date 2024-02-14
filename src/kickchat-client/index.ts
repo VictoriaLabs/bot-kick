@@ -1,9 +1,12 @@
 import { URLSearchParams } from "url";
 import { v4 as uuidv4 } from "uuid";
 import WebSocket from "ws";
+import Sentry from "@sentry/node";
 
 import { onMessage } from "./handlers/onMessage";
 import { getChatroomId, runtimeChannelData } from "./utils";
+
+Sentry.init({ dsn: process.env.SENTRY_DSN });
 
 const baseUrl = process.env.KICKCHAT_WEBSOCKET;
 const urlParams = new URLSearchParams({
