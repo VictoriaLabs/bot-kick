@@ -8,7 +8,7 @@ export class HttpsProtocol {
     private success: boolean;
     private cookies: Cookie[];
 
-    constructor(url: string, options: any, tokens: any, Cookies: Cookie[] = []) {
+    constructor(url: string, options: any, tokens: any = undefined, Cookies: Cookie[] = []) {
         this.url = url;
         this.options = options;
         this.tokens = tokens;
@@ -30,7 +30,6 @@ export class HttpsProtocol {
         
         // console.log(this.response.status);
         this.success = this.status(this.response);
-        
         
         return this.response;
     }
