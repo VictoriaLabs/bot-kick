@@ -7,7 +7,8 @@
     "dev": "nodemon src/index.ts",
     "prd": "node dist/index.js",
     "build": "tsc -p .",
-    "prd:clean": "rm -rf dist"
+    "prd:clean": "rm -rf dist",
+    "start": "ts-node app.ts"
   },
   "repository": {
     "type": "git",
@@ -51,7 +52,7 @@
     "nodemon": "^3.0.1",
     "prettier": "^2.8.8",
     "ts-node": "^10.9.1",
-    "typescript": "^4.9.5"
+    "typescript": "^5.2.2"
   },
   "engines": {
     "node": ">=18.14.0"

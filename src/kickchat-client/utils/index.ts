@@ -36,5 +36,6 @@ export const getChatroomId = async (channels: string[]) => {
     const chatRoomId = channelData.chatroom.id;
     chatroomIds.push(chatRoomId);
   }
+  
   return chatroomIds;
 };
