@@ -91,5 +91,5 @@ function sendMessage(channelName : string | undefined, username : string, messag
     message: message,
   };
 
-  emitEvent("message", data);
+  emitEvent("sendMessage", data);
 }
