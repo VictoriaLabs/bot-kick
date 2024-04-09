@@ -2,7 +2,7 @@ import WebSocket from "ws";
 
 import { MessageData, MessageEvent } from "../types/events";
 
-import { runtimeChannelData } from "../utils/index";
+import { bannedChannels, runtimeChannelData } from "../utils/index";
 
 import { emitEvent } from "../../socket/socket";
 
@@ -36,13 +36,14 @@ const messageParser = (message: string) => {
   const messageEventJSON: MessageEvent = JSON.parse(message);
   if (messageEventJSON.event === "App\\Events\\ChatMessageEvent") {
     const data: MessageData = JSON.parse(messageEventJSON.data);
-    const message = data.content;
+    let message = data.content;
     const channelId = data.chatroom_id;
     const username = data.sender.username;
     // this regex detects emotes and removes the extra stuff only leaves the emote name/string
     const emoteRegex = /\[emote:\d+:[^\]]+\]/g;
     const channelName = runtimeChannelData.get(channelId);
     // this is only to display chat events in the command line
+    if (bannedChannels.includes(username)) return;
     try {
       // WARNING: this sometimes breaks, my guess is probably receiving gifted sub event
       if (message.match(emoteRegex)) {
@@ -51,14 +52,12 @@ const messageParser = (message: string) => {
         //   const parts = match.substring(7, match.length - 1).split(":")
         //   return parts[1]
         // }
-        const processedMsg = message.replace(emoteRegex, (match: any) => {
+        message = message.replace(emoteRegex, (match: any) => {
           const parts = match.substring(7, match.length - 1).split(":");
           return parts[1];
         });
-        sendMessage(channelName, username, processedMsg);
-      } else {
-        sendMessage(channelName, username, message);
       }
+      sendMessage(channelName, username, message);
     } catch (error) {
       console.log("Message filter error:", error);
     }
@@ -90,6 +89,6 @@ function sendMessage(channelName : string | undefined, username : string, messag
     username: username,
     message: message,
   };
-
+  
   emitEvent("sendMessage", data);
 }
