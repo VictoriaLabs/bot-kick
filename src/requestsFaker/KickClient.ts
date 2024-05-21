@@ -24,7 +24,9 @@ export default class Client{
         };
     }
 
-    public async SendMessages(message: string, request : any, channelName : string, channelId : number) : Promise<void> {
+    public async SendMessages(message: string, re : any, channelName : string, channelId : number) : Promise<void> {
+        let request = JSON.parse(JSON.stringify(re));
+
         request.url += channelId.toString();
         request.options.headers.Referer += channelName;
 
@@ -35,11 +37,21 @@ export default class Client{
         request.options.body = JSON.stringify(messageBody);
         
         let messageRequest = new HttpsProtocol(request.url, request.options, request.tokens);
+        this.suppr_fucking_aws_cookies()
         messageRequest.Cookies = this.cookies;
         await messageRequest.httpsFetcher();
+        this.cookies = messageRequest.Cookies
     }
 
     get Cookies() : Cookie[] {
         return this.cookies;
+    }
+
+    public suppr_fucking_aws_cookies(){
+        this.cookies.forEach((cookie,index) => {
+            if (cookie.Name.includes("AWS")){
+                delete this.cookies[index]
+            }
+        });
     }
 }

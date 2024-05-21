@@ -28,7 +28,6 @@ export class HttpsProtocol {
         
         await fetch(this.url, this.options).then(res => this.response = res);
         
-        // console.log(this.response.status);
         this.success = this.status(this.response);
         
         return this.response;

@@ -97,4 +97,10 @@ const client = async (channels: string[]) => {
   connectToDynamicChannels(chatroomIds);
 };
 
-export { client };
+const closeClient = () => {
+  activeSockets.forEach((socket) => {
+    socket.close();
+  });
+};
+
+export { client, closeClient };

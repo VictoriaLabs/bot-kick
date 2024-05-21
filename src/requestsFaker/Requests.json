@@ -58,13 +58,13 @@
                     "accept-language": "fr-FR",
                     "authorization": "Bearer ",
                     "content-type": "application/json",
-                    "sec-ch-ua": "\"Not A(Brand\";v=\"99\", \"Opera GX\";v=\"107\", \"Chromium\";v=\"121\"",
+                    "sec-ch-ua": "\"Opera GX\";v=\"109\", \"Not:A-Brand\";v=\"8\", \"Chromium\";v=\"123\"",
                     "sec-ch-ua-mobile": "?0",
                     "sec-ch-ua-platform": "\"Windows\"",
                     "sec-fetch-dest": "empty",
                     "sec-fetch-mode": "cors",
                     "sec-fetch-site": "same-origin",
-                    "x-socket-id": "140029.16757",
+                    "x-socket-id": "225903.24916",
                     "x-xsrf-token": "",
                     "cookie": "",
                     "Referer": "https://kick.com/",
@@ -73,20 +73,19 @@
                 "body": "",
                 "method": "POST"
             },
-        "tokens" : {
-            "authorization" : "XSRF-TOKEN",
-            "x-xsrf-token": "XSRF-TOKEN"
-        }
-    },
-
-    "get_channel_info" : {
-        "url" : "https://kick.com/api/v2/channels/",
-        "options" : {
-            "headers": {
-                "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
-                "cache-control": "max-age=0"
+            "tokens" : {
+                "authorization" : "XSRF-TOKEN",
+                "x-xsrf-token": "XSRF-TOKEN"
+            }
+        },
+        
+        "get_channel_info" : {
+            "url" : "https://kick.com/api/v2/channels/",
+            "options" : {
+                "headers": {
+                    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7",
+                    "cache-control": "max-age=0"
+                }
             }
         }
     }
-}
-

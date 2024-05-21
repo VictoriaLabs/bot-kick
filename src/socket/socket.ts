@@ -20,6 +20,10 @@ export function onEvent(eventName : string, callback : Function) {
     socket.on(eventName, callback);
 };
 
+export function offEvent(eventName : string) {
+    socket.off(eventName);
+};
+
 export function disconnect() {
     socket.disconnect();
     console.log('Déconnecté du serveur WebSocket');
