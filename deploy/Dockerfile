@@ -20,7 +20,6 @@ RUN npm i puppeteer
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
 RUN mkdir -p /home/root/Downloads
 
-CMD ["google-chrome-stable", "--no-sandbox"]
+RUN google-chrome-stable --no-sandbox
 
-ENTRYPOINT [ " npx", "ts-node", "app.ts"]
-
+ENTRYPOINT ["npx", "ts-node", "app.ts"]
