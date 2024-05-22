@@ -21,8 +21,16 @@ RUN apt-get update && apt-get install -y \
     libxss1 --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
+# Ajouter un utilisateur non privilégié et créer le dossier de téléchargements
+RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
+    && mkdir -p /home/pptruser/Downloads \
+    && chown -R pptruser:pptruser /home/pptruser
+
 # Créer et définir le répertoire de travail
 WORKDIR /usr/src/app
+
+# Donner les permissions de lecture et d'écriture dans le répertoire de travail
+RUN chown -R pptruser:pptruser /usr/src/app && chmod -R 755 /usr/src/app
 
 # Copier le code source
 COPY ../src ./
@@ -32,11 +40,6 @@ RUN npm install
 
 # Installer puppeteer
 RUN npm i puppeteer
-
-# Ajouter un utilisateur non privilégié et créer le dossier de téléchargements
-RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
-    && mkdir -p /home/pptruser/Downloads \
-    && chown -R pptruser:pptruser /home/pptruser
 
 # Définir l'utilisateur non privilégié par défaut
 USER pptruser
