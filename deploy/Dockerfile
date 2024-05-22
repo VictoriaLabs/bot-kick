@@ -17,6 +17,6 @@ RUN npm i puppeteer
     # Add user so we don't need --no-sandbox.
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
 RUN mkdir -p /home/root/Downloads
-CMD ["google-chrome-stable"]
+CMD ["google-chrome-stable", "--no-sandbox"]
 ENTRYPOINT [ " npx", "ts-node", "app.ts"]
 
