@@ -2,6 +2,7 @@ require('dotenv').config();
 
 export const socket = require('socket.io-client')(process.env.WEBSOCKET_URL);
 onEvent('connect', () => {
+    console.log('Connecté au serveur WebSocket');
     socket.emit('join', "victoria")
 });
 
