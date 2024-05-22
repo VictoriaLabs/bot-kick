@@ -30,7 +30,6 @@ RUN groupadd -r pptruser && useradd -r -g pptruser -G audio,video pptruser \
 WORKDIR /usr/src/app
 
 # Donner les permissions de lecture et d'écriture dans le répertoire de travail
-RUN chown -R pptruser:pptruser /usr/src/app && chmod -R 755 /usr/src/app
 
 # Copier le code source
 COPY ../src ./
@@ -40,6 +39,8 @@ RUN npm install
 
 # Installer puppeteer
 RUN npm i puppeteer
+
+RUN chown -R pptruser:pptruser /usr/src/app && chmod -R 777 /usr/src/app
 
 # Définir l'utilisateur non privilégié par défaut
 USER pptruser
