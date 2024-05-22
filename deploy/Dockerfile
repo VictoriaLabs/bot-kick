@@ -10,13 +10,17 @@ RUN rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
 
-COPY ../src /usr/src/app
+COPY ../src ./
 
-RUN npm init -y
+RUN npm install
+
 RUN npm i puppeteer
+
     # Add user so we don't need --no-sandbox.
     # same layer as npm install to keep re-chowned files from using up several hundred MBs more space
 RUN mkdir -p /home/root/Downloads
+
 CMD ["google-chrome-stable", "--no-sandbox"]
+
 ENTRYPOINT [ " npx", "ts-node", "app.ts"]
 
